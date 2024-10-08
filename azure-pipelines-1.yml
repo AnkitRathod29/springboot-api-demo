@@ -12,6 +12,12 @@ pool:
   - Agent.Name -equals OTX-6VFZ314
   - Agent.Version -equals 3.245.0
 steps:
+
+- task: JavaToolInstaller@0
+  inputs:
+    versionSpec: '11'
+    jdkArchitectureOption: 'x64'
+    jdkSourceOption: 'PreInstalled'
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
@@ -23,8 +29,3 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
 
-- task: JavaToolInstaller@0
-  inputs:
-    versionSpec: '11'
-    jdkArchitectureOption: 'x64'
-    jdkSourceOption: 'PreInstalled'
