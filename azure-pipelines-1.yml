@@ -8,10 +8,7 @@ trigger:
 
 pool:
   name: Default
-  demands:
-   - agent.name -equals OTX-6VFZ314
-
-
+  demands: Agent.Name -equals OTX-6VFZ314
 steps:
 - task: Maven@3
   inputs:
