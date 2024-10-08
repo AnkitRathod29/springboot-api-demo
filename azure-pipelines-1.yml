@@ -23,3 +23,9 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
 
+- task: InstallFortifySCA@7
+  inputs:
+    InstallerPath: 'C:\Program Files\Fortify\Fortify_SCA_24.4.0\bin'
+    VS2015: false
+    LicenseFile: 'C:\Users\arathod3\Downloads\fortify.license'
+    RunFortifyRulepackUpdate: false
