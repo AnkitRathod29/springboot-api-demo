@@ -29,3 +29,8 @@ steps:
     VS2015: false
     LicenseFile: 'C:\Users\arathod3\Downloads\fortify.license'
     RunFortifyRulepackUpdate: false
+- task: FortifySCA@7
+  inputs:
+    applicationType: 'java'
+    fortifyBuildId: 'test-id'
+    fortifyScanType: 'LocalScan'
