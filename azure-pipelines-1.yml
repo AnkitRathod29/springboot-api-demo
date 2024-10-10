@@ -29,8 +29,11 @@ steps:
     VS2015: false
     LicenseFile: 'C:\Users\arathod3\Downloads\fortify.license'
     RunFortifyRulepackUpdate: false
-- task: FortifySCA@7
+- task: FortifyScanCentralSAST@7
   inputs:
-    applicationType: 'java'
-    fortifyBuildId: 'test-id'
-    fortifyScanType: 'LocalScan'
+    scanCentralCtrlUrl: 'https://sc-r9-ctrl1.fortifylab.net:8443/scancentral-ctrl'
+    scanCentralClientToken: '$(ScanCentral.ClientToken)'
+    sscUrl: 'https://eg1-r8-mysql.fortifylab.net:8443/ssc'
+    sscCiToken: '$(ScanCentral.SscCiToken)'
+    uploadToSSC: false
+    buildTool: 'mvn'
