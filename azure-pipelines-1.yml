@@ -5,6 +5,9 @@
 
 trigger:
 - master
+variables:
+  system.debug: true
+  NODE_DEBUG: request
 
 pool:
   name: Default
