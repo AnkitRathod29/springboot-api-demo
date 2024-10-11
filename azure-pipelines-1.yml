@@ -17,6 +17,24 @@ pool:
   - Agent.Name -equals OTX-6VFZ314
   - Agent.Version -equals 3.245.0
 steps:
+- task: JavaToolInstaller@0
+  inputs:
+    versionSpec: '17'
+    jdkArchitectureOption: 'x64'
+    jdkSourceOption: 'PreInstalled'
+
+- script: |
+    echo "##vso[task.setvariable variable=JAVA_HOME_BCK]$JAVA_HOME"
+    echo "##vso[task.setvariable variable=JAVA_HOME]C:\path\to\java17"
+  displayName: 'Set JAVA_HOME for Java 17'
+
+- script: |
+    java -version
+  displayName: 'Check Java Version'
+
+- script: |
+    echo "##vso[task.setvariable variable=JAVA_HOME]$JAVA_HOME_BCK"
+  displayName: 'Restore original JAVA_HOME'
 - task: FortifyScanCentralSAST@7
   inputs:
     scanCentralCtrlUrl: 'https://sc-r9-ctrl1.fortifylab.net:8443/scancentral-ctrl'
