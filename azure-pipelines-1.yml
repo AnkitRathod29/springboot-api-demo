@@ -25,7 +25,7 @@ steps:
 
 - script: |
     echo "##vso[task.setvariable variable=JAVA_HOME_BCK]$JAVA_HOME"
-    echo "##vso[task.setvariable variable=JAVA_HOME]C:\Program Files\OpenLogic\jdk-17.0.11.9-hotspot\bin"
+    echo "##vso[task.setvariable variable=JAVA_HOME]C:\Program Files\OpenLogic\jdk-17.0.11.9-hotspot"
   displayName: 'Set JAVA_HOME for Java 17'
 
 - script: |
