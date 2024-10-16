@@ -1,4 +1,5 @@
 # Maven
+
 # Build your Java project and run tests with Apache Maven.
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
@@ -17,6 +18,14 @@ pool:
   - Agent.Name -equals OTX-6VFZ314
   - Agent.Version -equals 3.245.0
 steps:
+- task: FortifyScanCentralSAST@8
+  inputs:
+    scanCentralCtrlUrl: 'https://sc-r9-ctrl1.fortifylab.net:8443/scancentral-ctrl'
+    scanCentralClientToken: '$(ScanCentral.ClientToken)'
+    sscUrl: 'https://eg1-r8-mysql.fortifylab.net:8443/ssc'
+    sscCiToken: '$(ScanCentral.SscCiToken)'
+    buildTool: 'mvn'
+    downloadDebugLogs: true
 - task: FortifyScanCentralSAST@7
   inputs:
     scanCentralCtrlUrl: 'https://sc-r9-ctrl1.fortifylab.net:8443/scancentral-ctrl'
