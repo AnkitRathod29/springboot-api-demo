@@ -17,9 +17,7 @@ pool:
   - Agent.Name -equals OTX-6VFZ314
   - Agent.Version -equals 3.245.0
 steps:
-- task: task-ankit@0
-  inputs:
-    samplestring: 'ankit'
+
 - task: FortifyScanCentralSAST@7
   inputs:
     scanCentralCtrlUrl: 'https://sc-r9-ctrl1.fortifylab.net:8443/scancentral-ctrl'
