@@ -26,6 +26,7 @@ steps:
     sscCiToken: '$(ScanCentral.SscCiToken)'
     buildTool: 'mvn'
     downloadDebugLogs: true
+    debugLogFileName: 'myfile.zip'
 - task: FortifyScanCentralSAST@7
   inputs:
     scanCentralCtrlUrl: 'https://sc-r9-ctrl1.fortifylab.net:8443/scancentral-ctrl'
