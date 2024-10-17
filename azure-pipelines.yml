@@ -10,7 +10,7 @@ variables:
   Agent.Diagnostic: true
   NODE_TLS_REJECT_UNAUTHORIZED: 0
 pool:
-  vmImage: ubuntu-latest
+  vmImage: windows-latest
 
 steps:
 - task: FortifyScanCentralSAST@8
