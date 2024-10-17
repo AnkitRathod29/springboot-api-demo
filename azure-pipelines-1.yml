@@ -26,6 +26,7 @@ steps:
     sscCiToken: '$(ScanCentral.SscCiToken)'
     buildTool: 'mvn'
     downloadDebugLogs: true
+    debugLogFileName: 'MyDiagnosticsFile'
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
