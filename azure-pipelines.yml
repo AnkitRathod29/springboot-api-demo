@@ -5,11 +5,22 @@
 
 trigger:
 - master
-
+variables:
+  system.debug: true
+  Agent.Diagnostic: true
+  NODE_TLS_REJECT_UNAUTHORIZED: 0
 pool:
   vmImage: ubuntu-latest
 
 steps:
+- task: FortifyScanCentralSAST@8
+  inputs:
+    scanCentralCtrlUrl: 'https://sc-r9-ctrl1.fortifylab.net:8443/scancentral-ctrl'
+    scanCentralClientToken: '$(ScanCentral.ClientToken)'
+    sscUrl: 'https://eg1-r8-mysql.fortifylab.net:8443/ssc'
+    sscCiToken: '$(ScanCentral.SscCiToken)'
+    buildTool: 'mvn'
+    downloadDebugLogs: true
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
@@ -20,11 +31,4 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
-- task: FortifyScanCentralSAST@7
-  inputs:
-    scanCentralCtrlUrl: 'https://sc-r9-ctrl1.fortifylab.net:8443/scancentral-ctrl'
-    scanCentralClientToken: '$(ScanCentral.ClientToken)'
-    sscUrl: 'https://eg1-r8-mysql.fortifylab.net:8443/ssc'
-    sscCiToken: '$(ScanCentral.SscCiToken)'
-    buildTool: 'mvn'
 
