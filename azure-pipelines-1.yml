@@ -24,7 +24,10 @@ steps:
     scanCentralClientToken: '$(ScanCentral.ClientToken)'
     sscUrl: 'https://eg1-r8-mysql.fortifylab.net:8443/ssc'
     sscCiToken: '$(ScanCentral.SscCiToken)'
+    buildTool: 'mvn'
+
     downloadDebugLogs: true
+
     debugLogFileName: 'myfilediag.zip'
 - task: Maven@3
   inputs:
