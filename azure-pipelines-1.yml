@@ -28,7 +28,7 @@ steps:
 
     downloadDebugLogs: true
 
-    debugLogFileName: 'myfilediag.zip'
+    debugLogFileName: 'SastPipelineDiagnosticFile'
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
