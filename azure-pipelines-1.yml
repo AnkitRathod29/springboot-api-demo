@@ -28,10 +28,7 @@ steps:
     downloadDebugLogs: true
     debugLogFileName: 'SastPipelineDiagnosticFile'
 # Step to generate a specific file
-- script: |
-    echo "Generating a file..."
-    echo "This is my important file." > $(System.DefaultWorkingDirectory)/SastPipelineDiagnosticFile.zip
-  displayName: 'Generate File'
+
 
 # Publish the specific file as a pipeline artifact
 - publish: $(System.DefaultWorkingDirectory)/SastPipelineDiagnosticFile.zip
