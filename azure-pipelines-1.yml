@@ -25,10 +25,18 @@ steps:
     sscUrl: 'https://eg1-r8-mysql.fortifylab.net:8443/ssc'
     sscCiToken: '$(ScanCentral.SscCiToken)'
     buildTool: 'mvn'
-
     downloadDebugLogs: true
-
     debugLogFileName: 'SastPipelineDiagnosticFile'
+# Step to generate a specific file
+- script: |
+    echo "Generating a file..."
+    echo "This is my important file." > $(System.DefaultWorkingDirectory)/SastPipelineDiagnosticFile.zip
+  displayName: 'Generate File'
+
+# Publish the specific file as a pipeline artifact
+- publish: $(System.DefaultWorkingDirectory)/SastPipelineDiagnosticFile.zip
+  artifact: 'MyImportantFile'
+  displayName: 'Publish Important File'
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
