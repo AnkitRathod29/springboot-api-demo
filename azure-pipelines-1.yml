@@ -18,7 +18,7 @@ pool:
   - Agent.Name -equals OTX-6VFZ314
   - Agent.Version -equals 3.245.0
 steps:
-- task: FortifyScanCentralSAST@8
+- task: FortifyScanCentralSAST@9
   inputs:
     scanCentralCtrlUrl: 'https://sc-r9-ctrl1.fortifylab.net:8443/scancentral-ctrl'
     scanCentralClientToken: '$(ScanCentral.ClientToken)'
@@ -45,4 +45,3 @@ steps:
     VS2015: false
     LicenseFile: 'C:\Users\arathod3\Downloads\fortify.license'
     RunFortifyRulepackUpdate: false
-
