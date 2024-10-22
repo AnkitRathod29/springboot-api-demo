@@ -6,6 +6,7 @@
 
 trigger:
 - master
+
 variables:
   system.debug: true
   Agent.Diagnostic: true
@@ -18,6 +19,8 @@ pool:
   - Agent.Name -equals OTX-6VFZ314
   - Agent.Version -equals 3.245.0
 steps:
+- checkout: self
+  clean: false
 - task: FortifyScanCentralSAST@9
   inputs:
     scanCentralCtrlUrl: 'https://sc-r9-ctrl1.fortifylab.net:8443/scancentral-ctrl'
