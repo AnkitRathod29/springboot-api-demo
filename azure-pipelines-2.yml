@@ -12,7 +12,7 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- task: FortifyScanCentralSAST@9
+- task: FortifyScanCentralSAST@10
   inputs:
     scanCentralClientToken: '$(ScanCentral.ClientToken)'
     sscUrl: 'https://ssc.demo.fortify.com'
