@@ -5,7 +5,9 @@
 
 trigger:
 - master
-
+variables:
+  system.debug: true
+  Agent.Diagnostic: true
 pool:
   vmImage: ubuntu-latest
 
