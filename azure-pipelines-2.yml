@@ -9,7 +9,7 @@ variables:
   system.debug: true
   Agent.Diagnostic: true
 pool:
-  vmImage: ubuntu-latest
+  vmImage: windows-latest
 
 steps:
 - task: FortifyScanCentralSAST@10
