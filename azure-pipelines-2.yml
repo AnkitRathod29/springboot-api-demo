@@ -9,7 +9,7 @@ variables:
   system.debug: true
   Agent.Diagnostic: true
 pool:
-  vmImage: macos-latest
+  vmImage: macos-14-xlarge
 
 steps:
 - task: FortifyScanCentralSAST@10
