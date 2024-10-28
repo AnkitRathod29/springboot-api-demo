@@ -18,6 +18,7 @@ steps:
     sscUrl: 'https://ssc.demo.fortify.com'
     sscCiToken: '$(ScanCentral.SscCiToken)'
     buildTool: 'mvn'
+    downloadDebugLogs: true
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
