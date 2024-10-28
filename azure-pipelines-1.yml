@@ -30,7 +30,10 @@ steps:
     buildTool: 'mvn'
     downloadDebugLogs: true
     debugLogFileName: 'SastPipelineDiagnosticFile'
-
+- task: FortifyScanCentralSAST@10
+  inputs:
+    scanCentralClientToken: '$(ScanCentral.ClientToken)'
+    sscCiToken: '$(ScanCentral.SscCiToken)'
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
