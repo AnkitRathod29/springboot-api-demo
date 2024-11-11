@@ -29,7 +29,7 @@ steps:
     sscCiToken: '$(ScanCentral.SscCiToken)'
     buildTool: 'mvn'
     downloadDebugLogs: true
-    debugLogFileName: 'SastPipelineDiagnosticFile'
+   
 - task: FortifyScanCentralSAST@10
   inputs:
     scanCentralClientToken: '$(ScanCentral.ClientToken)'
