@@ -4,9 +4,6 @@
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
 
-trigger:
-- master
-
 variables:
   system.debug: true
   Agent.Diagnostic: true
@@ -21,14 +18,7 @@ pool:
 steps:
 - checkout: self
   clean: false
-- task: FortifyScanCentralSAST@10
-  inputs:
-    scanCentralCtrlUrl: 'https://sc-r9-ctrl1.fortifylab.net:8443/scancentral-ctrl'
-    scanCentralClientToken: '$(ScanCentral.ClientToken)'
-    sscUrl: 'https://eg1-r8-mysql.fortifylab.net:8443/ssc'
-    sscCiToken: '$(ScanCentral.SscCiToken)'
-    buildTool: 'mvn'
-    downloadDebugLogs: true
+
    
 - task: Maven@3
   inputs:
@@ -41,6 +31,14 @@ steps:
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
 
+- task: FortifyScanCentralSAST@10
+  inputs:
+    scanCentralCtrlUrl: 'https://sc-r9-ctrl1.fortifylab.net:8443/scancentral-ctrl'
+    scanCentralClientToken: '$(ScanCentral.ClientToken)'
+    sscUrl: 'https://eg1-r8-mysql.fortifylab.net:8443/ssc'
+    sscCiToken: '$(ScanCentral.SscCiToken)'
+    buildTool: 'mvn'
+    downloadDebugLogs: true
 - task: InstallFortifySCA@7
   inputs:
     InstallerPath: 'C:\Program Files\Fortify\Fortify_SCA_24.4.0\bin'
